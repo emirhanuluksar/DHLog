@@ -1,0 +1,7 @@
+2026-02-17 17:09:05.110 [ERR] Inventory service unavailable. Timeout awaiting response from 'catalog-api'.
+2026-02-17 17:09:05.115 [FTL] System.Net.Http.HttpRequestException: Connection refused (catalog-api:8080)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation\`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at LogSentinel.Infrastructure.External.CatalogServiceClient.GetProductAsync(String productId) in /src/LogSentinel/Infrastructure/External/CatalogServiceClient.cs:line 42

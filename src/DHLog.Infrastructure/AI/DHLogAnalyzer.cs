@@ -5,6 +5,7 @@ using Microsoft.SemanticKernel.Connectors.OpenAI;
 using System.Text.Json;
 using DHLog.Infrastructure.Constants;
 using Spectre.Console;
+using Microsoft.Extensions.Logging;
 
 #pragma warning disable SKEXP0001, SKEXP0010
 
@@ -13,6 +14,7 @@ namespace DHLog.Infrastructure.AI;
 public class SemanticKernelLogAnalyzer : ILogAnalyzer
 {
     private readonly Kernel _kernel;
+    private readonly ILogger<SemanticKernelLogAnalyzer> _logger;
 
     // Structured system prompt to enforce strict JSON output schema
 
@@ -33,9 +35,9 @@ Output Format:
 You MUST output raw JSON only. Do not include markdown formatting (```json ... ```).
 The JSON structure must be exactly:
 {{
-    ""{{DHLogConstants.AnalysisProperties.RootCause}}"": ""string"",
-    ""{{DHLogConstants.AnalysisProperties.SuggestedFix}}"": ""string"",
-    ""{{DHLogConstants.AnalysisProperties.RiskLevel}}"": ""string""
+    ""{DHLogConstants.AnalysisProperties.RootCause}"": ""string"",
+    ""{DHLogConstants.AnalysisProperties.SuggestedFix}"": ""string"",
+    ""{DHLogConstants.AnalysisProperties.RiskLevel}"": ""string""
 }}
 
 Constraints:
@@ -45,9 +47,11 @@ Constraints:
 ";
 
 
-    public SemanticKernelLogAnalyzer(Kernel kernel)
+
+    public SemanticKernelLogAnalyzer(Kernel kernel, ILogger<SemanticKernelLogAnalyzer> logger)
     {
         _kernel = kernel;
+        _logger = logger;
     }
 
     public async Task<AnalysisResult> AnalyzeAsync(LogEntry logEntry, CancellationToken cancellationToken)
@@ -69,7 +73,7 @@ Stack Trace:
             ResponseFormat = "json_object" // Enforce strictly valid JSON output
 
         };
-        
+
         // Instantiate the semantic function
 
         var function = _kernel.CreateFunctionFromPrompt(
@@ -96,11 +100,21 @@ Stack Trace:
             // Remove potential formatting artifacts from the raw response string
 
 
+            // Improved JSON extraction: ensure we parse only the JSON object
             var cleanJson = jsonResponse.Replace("```json", "").Replace("```", "").Trim();
-            
+
+            // Extract JSON object if wrapped in text
+            int firstBrace = cleanJson.IndexOf('{');
+            int lastBrace = cleanJson.LastIndexOf('}');
+
+            if (firstBrace >= 0 && lastBrace > firstBrace)
+            {
+                cleanJson = cleanJson.Substring(firstBrace, lastBrace - firstBrace + 1);
+            }
+
             var doc = JsonDocument.Parse(cleanJson);
             var root = doc.RootElement;
-            
+
             var analysisResult = new AnalysisResult(
                 RootCause: root.GetProperty(DHLogConstants.AnalysisProperties.RootCause).GetString() ?? DHLogConstants.UnknownSource,
                 SuggestedFix: root.GetProperty(DHLogConstants.AnalysisProperties.SuggestedFix).GetString() ?? "Check logs manually.",
@@ -119,15 +133,18 @@ Stack Trace:
 
             AnsiConsole.Write(new Panel(table)
                 .Header("[bold red]🚨 CRITICAL INCIDENT REPORT[/]")
-                .BorderColor(Color.Orange1).Padding(1,1,1,1));
+                .BorderColor(Color.Orange1).Padding(1, 1, 1, 1));
 
 
             return analysisResult;
 
 
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            // Log the failure to standard logs with full context
+            _logger.LogError(ex, "Failed to parse AI response. Raw output: {RawResponse}", jsonResponse);
+
             // Handle deserialization failures gracefully
 
 
