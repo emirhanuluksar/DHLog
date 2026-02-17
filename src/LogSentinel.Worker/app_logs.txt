@@ -1,0 +1,79 @@
+2026-02-17T14:30:00Z|Error|PaymentService|NullReferenceException: Object reference not set to an instance of an object.|   at LogSentinel.Worker.PaymentProcessor.Process(Order order) in C:\Projects\PaymentService.cs:line 42
+2026-02-17T14:30:00Z|Error|PaymentService|NullReferenceException: Object reference not set to an instance of an object.|   at LogSentinel.Worker.PaymentProcessor.Process(Order order) in C:\Projects\PaymentService.cs:line 42
+2026-02-17T14:30:00Z|Error|PaymentService|NullReferenceException: Object reference not set to an instance of an object.|   at LogSentinel.Worker.PaymentProcessor.Process(Order order) in C:\Projects\PaymentService.cs:line 42
+2026-02-17T14:30:00Z|Error|PaymentService|NullReferenceException: Object reference not set to an instance of an object.|   at LogSentinel.Worker.PaymentProcessor.Process(Order order) in C:\Projects\PaymentService.cs:line 42
+2026-02-17T14:30:00Z|Error|PaymentService|NullReferenceException: Object reference not set to an instance of an object.|   at LogSentinel.Worker.PaymentProcessor.Process(Order order) in C:\Projects\PaymentService.cs:line 42
+2026-02-17T14:35:12Z|Error|InventoryService|Microsoft.Data.SqlClient.SqlException: Transaction (Process ID 62) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.|   at LogSentinel.Infrastructure.Data.InventoryRepository.UpdateStockAsync(Int32 productId, Int32 quantity) in C:\Projects\LogSentinel\src\LogSentinel.Infrastructure\Data\InventoryRepository.cs:line 85
+2026-02-17T14:30:00Z|Error|PaymentService|NullReferenceException: Object reference not set to an instance of an object.|   at LogSentinel.Worker.PaymentProcessor.Process(Order order) in C:\Projects\PaymentService.cs:line 42
+2026-02-17T14:30:00Z|Error|PaymentService|NullReferenceException: Object reference not set to an instance of an object.|   at LogSentinel.Worker.PaymentProcessor.Process(Order order) in C:\Projects\PaymentService.cs:line 42
+2026-02-17T14:30:00Z|Error|PaymentService|NullReferenceException: Object reference not set to an instance of an object.|   at LogSentinel.Worker.PaymentProcessor.Process(Order order) in C:\Projects\PaymentService.cs:line 42
+2026-02-17T14:30:00Z|Error|PaymentService|NullReferenceException: Object reference not set to an instance of an object.|   at LogSentinel.Worker.PaymentProcessor.Process(Order order) in C:\Projects\PaymentService.cs:line 42
+2026-02-17T14:30:00Z|Error|PaymentService|NullReferenceException: Object reference not set to an instance of an object.|   at LogSentinel.Worker.PaymentProcessor.Process(Order order) in C:\Projects\PaymentService.cs:line 42
+2026-02-17T14:35:12Z|Error|InventoryService|Microsoft.Data.SqlClient.SqlException: Transaction (Process ID 62) was deadlocked on lock resources with another process and has been chosen as the deadlock victim. Rerun the transaction.|   at LogSentinel.Infrastructure.Data.InventoryRepository.UpdateStockAsync(Int32 productId, Int32 quantity) in C:\Projects\LogSentinel\src\LogSentinel.Infrastructure\Data\InventoryRepository.cs:line 85
+2026-02-17T14:42:10.112Z|Warning|Conquer.Services.Basket|Redis cache latency is high (250ms). Key: "basket:user:u-10293". Operation: GET.|   at StackExchange.Redis.ConnectionMultiplexer.ExecuteAsyncImpl[T](Message message, ResultProcessor`1 processor, ServerEndPoint server)
+2026-02-17T14:42:11.005Z|Error|Conquer.Services.Basket|StackExchange.Redis.RedisTimeoutException: Timeout performing GET (5000ms), inst: 1, qs: 15, in: 0, serverEndpoint: 127.0.0.1:6379, mc: 1/1/0, mgr: 10 of 10 available, clientName: ConquerBasketApi|   at Conquer.Services.Basket.Infrastructure.RedisBasketRepository.GetBasketAsync(String customerId) in /src/Conquer.Services.Basket/Infrastructure/RedisBasketRepository.cs:line 45
+2026-02-17T14:42:11.230Z|Error|Conquer.Services.Basket|StackExchange.Redis.RedisTimeoutException: Timeout performing GET (5000ms), inst: 1, qs: 22, in: 0, serverEndpoint: 127.0.0.1:6379, mc: 1/1/0, mgr: 10 of 10 available, clientName: ConquerBasketApi|   at Conquer.Services.Basket.Infrastructure.RedisBasketRepository.GetBasketAsync(String customerId) in /src/Conquer.Services.Basket/Infrastructure/RedisBasketRepository.cs:line 45
+2026-02-17T14:42:11.455Z|Error|Conquer.Services.Basket|StackExchange.Redis.RedisTimeoutException: Timeout performing GET (5000ms), inst: 1, qs: 48, in: 0, serverEndpoint: 127.0.0.1:6379, mc: 1/1/0, mgr: 10 of 10 available, clientName: ConquerBasketApi|   at Conquer.Services.Basket.Infrastructure.RedisBasketRepository.GetBasketAsync(String customerId) in /src/Conquer.Services.Basket/Infrastructure/RedisBasketRepository.cs:line 45
+2026-02-17T14:42:12.100Z|Critical|Conquer.Services.Ordering|Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already. Connection pool has been exhausted.|   at Npgsql.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataSource.Get(NpgsqlConnector& conn, NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Conquer.Services.Ordering.Infrastructure.Data.OrderingDbContext.SaveChangesAsync(CancellationToken cancellationToken) in /src/Conquer.Services.Ordering/Infrastructure/Data/OrderingDbContext.cs:line 92
+2026-02-17T14:42:12.550Z|Error|Conquer.ServiceBus|MassTransit.MessageNotConsumedException: The message 'Conquer.Contracts.Events.BasketCheckoutEvent' was not consumed after 3 attempts.|   at MassTransit.ReceivePipe.Receive(ReceiveContext context)
+   at MassTransit.Transports.ReceivePipeDispatcher.Dispatch(ReceiveContext context, ReceiveLockContext receiveLockContext){
+  "@t": "2026-02-17T14:42:33.4589210Z",
+  "@mt": "An error occurred while processing the wallet transaction for User {UserId}. CorrelationId: {CorrelationId}",
+  "@l": "Error",
+  "SourceContext": "Conquer.Services.Wallet.Application.Commands.DepositFundsHandler",
+  "Application": "Conquer.Services.Wallet",
+  "Environment": "Production",
+  "UserId": "user-8842-x99",
+  "CorrelationId": "8f7d2a1b-9c4e-4f1a-b3d2-e5f6a7b8c9d0",
+  "TransactionAmount": 1500.00,
+  "Currency": "USD",
+  "Exception": "Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: The database operation was expected to affect 1 row(s), but actually affected 0 row(s); data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Conquer.Services.Wallet.Infrastructure.Data.WalletDbContext.SaveChangesAsync(CancellationToken cancellationToken) in /src/Conquer.Services.Wallet/Infrastructure/Data/WalletDbContext.cs:line 64
+   at Conquer.Services.Wallet.Application.Commands.DepositFunds.DepositFundsHandler.Handle(DepositFundsCommand request, CancellationToken cancellationToken) in /src/Conquer.Services.Wallet/Application/Commands/DepositFunds/DepositFundsHandler.cs:line 45
+   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)",
+  "MessageTemplate": "An error occurred while processing the wallet transaction for User \"user-8842-x99\". CorrelationId: \"8f7d2a1b-9c4e-4f1a-b3d2-e5f6a7b8c9d0\""
+}
+{
+  "@t": "2026-02-17T14:42:33.4589210Z",
+  "@mt": "An error occurred while processing the wallet transaction for User {UserId}. CorrelationId: {CorrelationId}",
+  "@l": "Error",
+  "SourceContext": "Conquer.Services.Wallet.Application.Commands.DepositFundsHandler",
+  "Application": "Conquer.Services.Wallet",
+  "Environment": "Production",
+  "UserId": "user-8842-x99",
+  "CorrelationId": "8f7d2a1b-9c4e-4f1a-b3d2-e5f6a7b8c9d0",
+  "TransactionAmount": 1500.00,
+  "Currency": "USD",
+  "Exception": "Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: The database operation was expected to affect 1 row(s), but actually affected 0 row(s); data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.\r\n   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)\r\n   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)\r\n   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)\r\n   at Conquer.Services.Wallet.Infrastructure.Data.WalletDbContext.SaveChangesAsync(CancellationToken cancellationToken) in /src/Conquer.Services.Wallet/Infrastructure/Data/WalletDbContext.cs:line 64\r\n   at Conquer.Services.Wallet.Application.Commands.DepositFunds.DepositFundsHandler.Handle(DepositFundsCommand request, CancellationToken cancellationToken) in /src/Conquer.Services.Wallet/Application/Commands/DepositFunds/DepositFundsHandler.cs:line 45\r\n   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)",
+  "MessageTemplate": "An error occurred while processing the wallet transaction for User \"user-8842-x99\". CorrelationId: \"8f7d2a1b-9c4e-4f1a-b3d2-e5f6a7b8c9d0\""
+}
+{
+  "@t": "2026-02-17T14:42:33.4589210Z",
+  "@mt": "An error occurred while processing the wallet transaction for User {UserId}. CorrelationId: {CorrelationId}",
+  "@l": "Error",
+  "SourceContext": "Conquer.Services.Wallet.Application.Commands.DepositFundsHandler",
+  "Application": "Conquer.Services.Wallet",
+  "Environment": "Production",
+  "UserId": "user-8842-x99",
+  "CorrelationId": "8f7d2a1b-9c4e-4f1a-b3d2-e5f6a7b8c9d0",
+  "TransactionAmount": 1500.00,
+  "Currency": "USD",
+  "Exception": "Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException: The database operation was expected to affect 1 row(s), but actually affected 0 row(s); data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.\r\n   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)\r\n   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)\r\n   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)\r\n   at Conquer.Services.Wallet.Infrastructure.Data.WalletDbContext.SaveChangesAsync(CancellationToken cancellationToken) in /src/Conquer.Services.Wallet/Infrastructure/Data/WalletDbContext.cs:line 64\r\n   at Conquer.Services.Wallet.Application.Commands.DepositFunds.DepositFundsHandler.Handle(DepositFundsCommand request, CancellationToken cancellationToken) in /src/Conquer.Services.Wallet/Application/Commands/DepositFunds/DepositFundsHandler.cs:line 45\r\n   at MediatR.Pipeline.RequestExceptionProcessorBehavior`2.Handle(TRequest request, RequestHandlerDelegate`1 next, CancellationToken cancellationToken)",
+  "MessageTemplate": "An error occurred while processing the wallet transaction for User \"user-8842-x99\". CorrelationId: \"8f7d2a1b-9c4e-4f1a-b3d2-e5f6a7b8c9d0\""
+}
+{"@t":"2026-02-17T14:42:33.4589210Z","@mt":"An error occurred...","@l":"Error","Exception":"Microsoft.EntityFrameworkCore.DbUpdateConcurrencyException..."}
+
+2026-02-17T14:42:10.112Z|Warning|Conquer.Services.Basket|Redis cache latency is high (250ms). Key: "basket:user:u-10293". Operation: GET.|   at StackExchange.Redis.ConnectionMultiplexer.ExecuteAsyncImpl[T](Message message, ResultProcessor`1 processor, ServerEndPoint server)
+2026-02-17T14:42:11.005Z|Error|Conquer.Services.Basket|StackExchange.Redis.RedisTimeoutException: Timeout performing GET (5000ms), inst: 1, qs: 15, in: 0, serverEndpoint: 127.0.0.1:6379, mc: 1/1/0, mgr: 10 of 10 available, clientName: ConquerBasketApi|   at Conquer.Services.Basket.Infrastructure.RedisBasketRepository.GetBasketAsync(String customerId) in /src/Conquer.Services.Basket/Infrastructure/RedisBasketRepository.cs:line 45
+2026-02-17T14:42:11.230Z|Error|Conquer.Services.Basket|StackExchange.Redis.RedisTimeoutException: Timeout performing GET (5000ms), inst: 1, qs: 22, in: 0, serverEndpoint: 127.0.0.1:6379, mc: 1/1/0, mgr: 10 of 10 available, clientName: ConquerBasketApi|   at Conquer.Services.Basket.Infrastructure.RedisBasketRepository.GetBasketAsync(String customerId) in /src/Conquer.Services.Basket/Infrastructure/RedisBasketRepository.cs:line 45
+2026-02-17T14:42:11.455Z|Error|Conquer.Services.Basket|StackExchange.Redis.RedisTimeoutException: Timeout performing GET (5000ms), inst: 1, qs: 48, in: 0, serverEndpoint: 127.0.0.1:6379, mc: 1/1/0, mgr: 10 of 10 available, clientName: ConquerBasketApi|   at Conquer.Services.Basket.Infrastructure.RedisBasketRepository.GetBasketAsync(String customerId) in /src/Conquer.Services.Basket/Infrastructure/RedisBasketRepository.cs:line 45
+2026-02-17T14:42:12.100Z|Critical|Conquer.Services.Ordering|Npgsql.PostgresException (0x80004005): 53300: sorry, too many clients already. Connection pool has been exhausted.|   at Npgsql.NpgsqlConnector.ConnectAsync(NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataSource.Get(NpgsqlConnector& conn, NpgsqlTimeout timeout, CancellationToken cancellationToken)
+   at Conquer.Services.Ordering.Infrastructure.Data.OrderingDbContext.SaveChangesAsync(CancellationToken cancellationToken) in /src/Conquer.Services.Ordering/Infrastructure/Data/OrderingDbContext.cs:line 92
+2026-02-17T14:42:12.550Z|Error|Conquer.ServiceBus|MassTransit.MessageNotConsumedException: The message 'Conquer.Contracts.Events.BasketCheckoutEvent' was not consumed after 3 attempts.|   at MassTransit.ReceivePipe.Receive(ReceiveContext context)
+   at MassTransit.Transports.ReceivePipeDispatcher.Dispatch(ReceiveContext context, ReceiveLockContext receiveLockContext)
